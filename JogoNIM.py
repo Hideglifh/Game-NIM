@@ -1,4 +1,8 @@
 def computador_escolhe_jogada(n, m):
+    # Calcula a melhor jogada do computador.
+    #: Número de peças restantes.
+    # m: Máximo de peças que podem ser retiradas.
+    # Returns:Número de peças que o computador irá retirar.
     if n <= m:
         return n
     else:
@@ -6,6 +10,10 @@ def computador_escolhe_jogada(n, m):
 
 
 def usuario_escolhe_jogada(n, m):
+    # Solicita a jogada do usuário e valida a entrada.
+    # n: Número de peças restantes.
+    # m: Máximo de peças que podem ser retiradas.
+    # Returns:Número de peças que o usuário irá retirar.
     while True:
         jogada = int(input("Quantas peças você vai tirar? "))
         if 1 <= jogada <= m and jogada <= n:
@@ -33,7 +41,7 @@ def partida():
             print("O computador tirou", jogada, "peças.")
         else:
             jogada = usuario_escolhe_jogada(n, m)
-            n -= jogada
+        n -= jogada
         print("Restam", n, "peças no tabuleiro.")
         vez_do_computador = not vez_do_computador
 
@@ -49,14 +57,13 @@ def campeonato():
     vitorias_computador = 0
 
     for i in range(3):
-        print("**** Rodada", i+1, "****")
+        print("**** Rodada", i+3, "****")
         partida()
         if vez_do_computador:
             print("Vez do computador!")
             vitorias_usuario += 1
         else:
             vitorias_computador += 1
-
     print("**** Final do campeonato ****")
     print("Placar: Você {} X {} Computador")
 
@@ -72,3 +79,4 @@ if __name__ == "__main__":
         partida()
     elif opcao == 2:
         campeonato()
+
